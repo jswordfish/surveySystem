@@ -14,7 +14,8 @@ public class DoubleQuestionAnswer {
 	@AttributeOverrides({
         @AttributeOverride(name="question", column= @Column(name="questionAnswer1_question")),
         @AttributeOverride(name="answer", column= @Column(name="questionAnswer1_answer")),
-        @AttributeOverride(name="id", column= @Column(name="questionAnswer1_id"))
+        @AttributeOverride(name="id", column= @Column(name="questionAnswer1_id")),
+        @AttributeOverride(name="context", column= @Column(name="questionAnswer1_context"))
         
       })
 	@Embedded
@@ -23,7 +24,8 @@ public class DoubleQuestionAnswer {
 	@AttributeOverrides({
         @AttributeOverride(name="question", column= @Column(name="questionAnswer2_question")),
         @AttributeOverride(name="answer", column= @Column(name="questionAnswer2_answer")),
-        @AttributeOverride(name="id", column= @Column(name="questionAnswer2_id"))
+        @AttributeOverride(name="id", column= @Column(name="questionAnswer2_id")),
+        @AttributeOverride(name="context", column= @Column(name="questionAnswer2_context"))
         
       })
 	@Embedded

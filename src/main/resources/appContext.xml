@@ -61,6 +61,26 @@
    </bean>
 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+    
+    <bean id="jsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"> </bean> 
+ 
+	<bean id="surveyManagementWebService" class="com.v2tech.surveysystem.webservices.SurveyManagementWebService"></bean>
+
+ <jaxrs:server id="surveyMgmt" address="/rest/">
+  
+  <jaxrs:serviceBeans>
+    <ref bean="surveyManagementWebService" />
+    
+  </jaxrs:serviceBeans>
+  
+	<jaxrs:providers>
+            <ref bean="jsonProvider"/>
+           
+    </jaxrs:providers>
+    
+   
+        
+ </jaxrs:server>
   
 </beans>
  

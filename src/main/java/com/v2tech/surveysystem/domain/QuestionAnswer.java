@@ -11,6 +11,8 @@ public class QuestionAnswer {
 	
 	private String answer;
 	
+	private String context;
+	
 	//private boolean isAnswered = false;
 
 	public String getQuestion() {
@@ -43,6 +45,14 @@ public class QuestionAnswer {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getContext() {
+		return context;
+	}
+
+	public void setContext(String context) {
+		this.context = context;
 	}
 
 	

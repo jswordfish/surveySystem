@@ -33,7 +33,7 @@ public class TestSurveySessionService {
 			questionAnswer1.setContext("Business Perspective");
 			
 			QuestionAnswer questionAnswer2= new QuestionAnswer();
-			questionAnswer2.setQuestion("Knows how the various functions at Colgate contribute to achieve Colgate’s strategic priorities.");
+			questionAnswer2.setQuestion("Knows how the various functions at Colgate contribute to achieve Colgate's strategic priorities.");
 			questionAnswer2.setContext("Business Perspective");
 			
 			QuestionAnswer questionAnswer3= new QuestionAnswer();
@@ -45,7 +45,7 @@ public class TestSurveySessionService {
 			questionAnswer4.setContext("Business Perspective");
 			
 			QuestionAnswer questionAnswer5= new QuestionAnswer();
-			questionAnswer5.setQuestion("Understands the competitive dynamics faced by Colgate in today’s market environment.");
+			questionAnswer5.setQuestion("Understands the competitive dynamics faced by Colgate in today's market environment.");
 			questionAnswer5.setContext("Business Perspective");
 			
 			QuestionAnswer questionAnswer6= new QuestionAnswer();
