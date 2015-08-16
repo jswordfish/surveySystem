@@ -7,6 +7,8 @@
 
   </head>
   <body>
+  
+  <form id="manager_survey_form" ng-submit="saveSurveySession()">
 <p><b>GROW Leadership Program</b></p>
 
 <p>Pre-Workshop Competency Assessment (Manager)</p>
@@ -20,7 +22,7 @@
 
 <tr>
 <td><p>Team Member’s Name:</p></td>
-<td> <input type="text" placeholder="Enter Team Member's name" required  ng-model="surveySession.teamMemberName" required</td>
+<td> <input type="text" placeholder="Enter Team Member's name" size="40" required ng-model="surveySession.teamMemberName"  </td>
 </tr>
 
 <tr>
@@ -37,7 +39,7 @@
 <table border="1" cellspacing="0" cellpadding="0" > 
 <tbody>
 <tr>
-<td colspan="2" rowspan="2" ><p><b>Please put an ‘x’ in the box on the right of each statement to reflect your team member’s current company level.</b></p></td>
+<td colspan="2" rowspan="2" ><p><b>Please select appropriate option on the right of each statement to reflect your team member’s current company level.</b></p></td>
 <td><p><b>1</b></p></td>
 <td><p><b>2</b></p></td>
 <td><p><b>3</b></p></td>
@@ -300,6 +302,8 @@
 </tbody>
 </table>
 
-<p><b>End Survey</b><button class="btn" ng-click="saveSurveySession()">Submit Survey</button></p>
+<p><b>
+<button id="submit_in_button" type="submit">Please Submit the survey! </button>
+</p>
   </body>
 </html>

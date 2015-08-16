@@ -30,6 +30,8 @@ public class DoubleQuestionAnswer {
       })
 	@Embedded
 	QuestionAnswer questionAnswer2;
+	
+	private String context;
 
 	public QuestionAnswer getQuestionAnswer1() {
 		return questionAnswer1;
@@ -53,6 +55,14 @@ public class DoubleQuestionAnswer {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getContext() {
+		return context;
+	}
+
+	public void setContext(String context) {
+		this.context = context;
 	}
 	
 	

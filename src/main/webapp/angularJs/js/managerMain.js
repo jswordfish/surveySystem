@@ -17,25 +17,46 @@ app.controller( 'ManagerController',  function($scope, $http, $window, $filter) 
 
 app.controller('PlayerController', function($scope, $http, $window, $filter) {
    $scope.currentDate = new Date();
-   console.log('1');
-   console.log('Full name in player controller' + $window.localStorage.getItem('fullName') );
-   console.log('2');	    
+     
    $scope.dt = $filter('date')( $scope.currentDate, "MM/dd/yyyyTHH:mm:ss");
     console.log(' date is '+$scope.dt);
+    $scope.type = $window.localStorage.getItem('surveyType');
     
-    $http.get('http://localhost/v2-survey-1.0-SNAPSHOT/ws/rest/surveyMgmtRestService/surveySessionForManagerComepency').
-        success(function(data) {
-            $scope.surveySession = data;
-	    
-            $scope.surveySession.user = $window.localStorage.getItem('fullName');
-	    $scope.surveySession.email = $window.localStorage.getItem('email');
-	    $scope.surveySession.surveyType = $window.localStorage.getItem('surveyType');
-	    $scope.surveySession.surveySessionDate = $scope.dt;
-	    console.log(' 1' +$scope.surveySession.user);
-	     console.log(' 2' +$scope.surveySession.email);
-	     console.log(' 3' +$scope.surveySession.surveyType);
-	    
-        });
+	if($scope.type == 'ManagerCompetencyAssessment'){
+		$http.get('http://localhost/v2-survey-1.0-SNAPSHOT/ws/rest/surveyMgmtRestService/surveySessionForManagerComepency').
+			success(function(data) {
+			    $scope.surveySession = data;
+			    
+			    $scope.surveySession.user = $window.localStorage.getItem('fullName');
+			    $scope.surveySession.email = $window.localStorage.getItem('email');
+			    $scope.surveySession.surveyType = $window.localStorage.getItem('surveyType');
+			    $scope.surveySession.surveySessionDate = $scope.dt;
+			    console.log(' 1' +$scope.surveySession.user);
+			     console.log(' 2' +$scope.surveySession.email);
+			     console.log(' 3' +$scope.surveySession.surveyType);
+		    
+		});
+	}
+	else if($scope.type == 'ParticipantCompetencyAssessment'){
+		$http.get('http://localhost/v2-survey-1.0-SNAPSHOT/ws/rest/surveyMgmtRestService/surveySessionForParticipantCompetency').
+			success(function(data) {
+			    $scope.surveySession = data;
+			    
+			    $scope.surveySession.user = $window.localStorage.getItem('fullName');
+			    $scope.surveySession.email = $window.localStorage.getItem('email');
+			    $scope.surveySession.surveyType = $window.localStorage.getItem('surveyType');
+			    $scope.surveySession.surveySessionDate = $scope.dt;
+			    console.log(' 1' +$scope.surveySession.user);
+			     console.log(' 2' +$scope.surveySession.email);
+			     console.log(' 3' +$scope.surveySession.surveyType);
+		    
+		});
+	}
+	else if($scope.type == 'ParticipantLeadershipStyle'){
+	
+	}
+    
+    
 	
 	$scope.saveSurveySession = function() {
 	
@@ -71,7 +92,20 @@ app.controller('PlayerController', function($scope, $http, $window, $filter) {
 	console.log($window.localStorage.getItem('email'));
 	console.log($window.localStorage.getItem('surveyType'));
 	
-	$window.location.href = 'Manager_Competency_Assessment.htm';	
+		if($window.localStorage.getItem('surveyType') == 'ManagerCompetencyAssessment'){
+			console.log('here 1');
+			$window.location.href = 'Manager_Competency_Assessment.htm';	
+		}
+		else if($window.localStorage.getItem('surveyType') == 'ParticipantCompetencyAssessment'){
+			console.log('here 2');
+			$window.location.href = 'Participant_Competency_Assessment.htm';	
+		
+		}
+		else if($window.localStorage.getItem('surveyType') == 'ParticipantLeadershipStyle'){
+			console.log('here 3');
+			$window.location.href = 'Participant_LeadershipStyle_Assessment.htm';	
+		}
+	
      };
    
     
