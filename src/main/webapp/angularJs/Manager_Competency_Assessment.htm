@@ -2,6 +2,7 @@
 <html ng-app="myApp" ng-controller="PlayerController">
   <head>
     <script src="js/1.0.7/angular.min.js"></script>
+
     <script src="js/managerMain.js"></script>
 
   </head>
@@ -14,7 +15,7 @@
 <tbody>
 <tr>
 <td width="30%"><p>Your Name:</p></td>
-<td> </td>
+<td> {{ surveySession.user }}</td>
 </tr>
 
 <tr>
@@ -57,189 +58,191 @@
 <tr>
 <td rowspan="5" ><p>Business Perspective</p></td>
 <td><p> {{ surveySession.questionAnswers[0].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+
+
+<td> <input ng-model="surveySession.questionAnswers[0].answer" value="Very Poor" type="radio" name="verypoor0"></td>
+<td> <input ng-model="surveySession.questionAnswers[0].answer" value="Poor" type="radio" name="poor0"> </td>
+<td> <input ng-model="surveySession.questionAnswers[0].answer" value="Average" type="radio" name="average0"> </td>
+<td> <input ng-model="surveySession.questionAnswers[0].answer" value="Good" type="radio" name="good0"> </td>
+<td> <input ng-model="surveySession.questionAnswers[0].answer" value="Excellent" type="radio" name="excellent0"> </td>
 </tr>
 
 <tr>
 <td><p> {{ surveySession.questionAnswers[1].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[1].answer" value="Very Poor" type="radio" name="verypoor1"></td>
+<td> <input ng-model="surveySession.questionAnswers[1].answer" value="Poor" type="radio" name="poor1"> </td>
+<td> <input ng-model="surveySession.questionAnswers[1].answer" value="Average" type="radio" name="average1"> </td>
+<td> <input ng-model="surveySession.questionAnswers[1].answer" value="Good" type="radio" name="good1"> </td>
+<td> <input ng-model="surveySession.questionAnswers[1].answer" value="Excellent" type="radio" name="excellent1"> </td>
 </tr>
 
 <tr>
 <td><p> {{ surveySession.questionAnswers[2].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[2].answer" value="Very Poor" type="radio" name="verypoor2"></td>
+<td> <input ng-model="surveySession.questionAnswers[2].answer" value="Poor" type="radio" name="poor2"> </td>
+<td> <input ng-model="surveySession.questionAnswers[2].answer" value="Average" type="radio" name="average2"> </td>
+<td> <input ng-model="surveySession.questionAnswers[2].answer" value="Good" type="radio" name="good2"> </td>
+<td> <input ng-model="surveySession.questionAnswers[2].answer" value="Excellent" type="radio" name="excellent2"> </td>
 </tr>
 
 <tr>
 <td><p> {{ surveySession.questionAnswers[3].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[3].answer" value="Very Poor" type="radio" name="verypoor3"></td>
+<td> <input ng-model="surveySession.questionAnswers[3].answer" value="Poor" type="radio" name="poor3"> </td>
+<td> <input ng-model="surveySession.questionAnswers[3].answer" value="Average" type="radio" name="average3"> </td>
+<td> <input ng-model="surveySession.questionAnswers[3].answer" value="Good" type="radio" name="good3"> </td>
+<td> <input ng-model="surveySession.questionAnswers[3].answer" value="Excellent" type="radio" name="excellent3"> </td>
 </tr>
 
 <tr>
 <td><p> {{ surveySession.questionAnswers[4].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[4].answer" value="Very Poor" type="radio" name="verypoor4"></td>
+<td> <input ng-model="surveySession.questionAnswers[4].answer" value="Poor" type="radio" name="poor4"> </td>
+<td> <input ng-model="surveySession.questionAnswers[4].answer" value="Average" type="radio" name="average4"> </td>
+<td> <input ng-model="surveySession.questionAnswers[4].answer" value="Good" type="radio" name="good4"> </td>
+<td> <input ng-model="surveySession.questionAnswers[4].answer" value="Excellent" type="radio" name="excellent4"> </td>
 </tr>
 
 <tr>
 <td rowspan="5" ><p>Problem Solving</p></td>
 <td><p> {{ surveySession.questionAnswers[5].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[5].answer" value="Very Poor" type="radio" name="verypoor5"></td>
+<td> <input ng-model="surveySession.questionAnswers[5].answer" value="Poor" type="radio" name="poor5"> </td>
+<td> <input ng-model="surveySession.questionAnswers[5].answer" value="Average" type="radio" name="average5"> </td>
+<td> <input ng-model="surveySession.questionAnswers[5].answer" value="Good" type="radio" name="good5"> </td>
+<td> <input ng-model="surveySession.questionAnswers[5].answer" value="Excellent" type="radio" name="excellent5"> </td>
 </tr>
 
 <tr>
 <td><p> {{ surveySession.questionAnswers[6].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[6].answer" value="Very Poor" type="radio" name="verypoor6"></td>
+<td> <input ng-model="surveySession.questionAnswers[6].answer" value="Poor" type="radio" name="poor6"> </td>
+<td> <input ng-model="surveySession.questionAnswers[6].answer" value="Average" type="radio" name="average6"> </td>
+<td> <input ng-model="surveySession.questionAnswers[6].answer" value="Good" type="radio" name="good6"> </td>
+<td> <input ng-model="surveySession.questionAnswers[6].answer" value="Excellent" type="radio" name="excellent6"> </td>
 </tr>
 
 <tr>
 <td><p> {{ surveySession.questionAnswers[7].question }}</p>
 
 </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[7].answer" value="Very Poor" type="radio" name="verypoor7"></td>
+<td> <input ng-model="surveySession.questionAnswers[7].answer" value="Poor" type="radio" name="poor7"> </td>
+<td> <input ng-model="surveySession.questionAnswers[7].answer" value="Average" type="radio" name="average7"> </td>
+<td> <input ng-model="surveySession.questionAnswers[7].answer" value="Good" type="radio" name="good7"> </td>
+<td> <input ng-model="surveySession.questionAnswers[7].answer" value="Excellent" type="radio" name="excellent7"> </td>
 </tr>
 
 <tr>
 <td><p> {{ surveySession.questionAnswers[8].question }}</p>
 
 </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[8].answer" value="Very Poor" type="radio" name="verypoor8"></td>
+<td> <input ng-model="surveySession.questionAnswers[8].answer" value="Poor" type="radio" name="poor8"> </td>
+<td> <input ng-model="surveySession.questionAnswers[8].answer" value="Average" type="radio" name="average8"> </td>
+<td> <input ng-model="surveySession.questionAnswers[8].answer" value="Good" type="radio" name="good8"> </td>
+<td> <input ng-model="surveySession.questionAnswers[8].answer" value="Excellent" type="radio" name="excellent8"> </td>
 </tr>
 
 <tr>
 <td><p> {{ surveySession.questionAnswers[9].question }}</p>
 
 </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[9].answer" value="Very Poor" type="radio" name="verypoor9"></td>
+<td> <input ng-model="surveySession.questionAnswers[9].answer" value="Poor" type="radio" name="poor9"> </td>
+<td> <input ng-model="surveySession.questionAnswers[9].answer" value="Average" type="radio" name="average9"> </td>
+<td> <input ng-model="surveySession.questionAnswers[9].answer" value="Good" type="radio" name="good9"> </td>
+<td> <input ng-model="surveySession.questionAnswers[9].answer" value="Excellent" type="radio" name="excellent9"> </td>
 </tr>
 <tr>
 <td rowspan="4" ><p>Communication Skills</p></td>
 <td><p> {{ surveySession.questionAnswers[10].question }}</p>
 
 </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[10].answer" value="Very Poor" type="radio" name="verypoor10"></td>
+<td> <input ng-model="surveySession.questionAnswers[10].answer" value="Poor" type="radio" name="poor10"> </td>
+<td> <input ng-model="surveySession.questionAnswers[10].answer" value="Average" type="radio" name="average10"> </td>
+<td> <input ng-model="surveySession.questionAnswers[10].answer" value="Good" type="radio" name="good10"> </td>
+<td> <input ng-model="surveySession.questionAnswers[10].answer" value="Excellent" type="radio" name="excellent10"> </td>
 </tr>
 
 <tr>
 <td><p>{{ surveySession.questionAnswers[11].question }}</p>
 
 </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[11].answer" value="Very Poor" type="radio" name="verypoor11"></td>
+<td> <input ng-model="surveySession.questionAnswers[11].answer" value="Poor" type="radio" name="poor11"> </td>
+<td> <input ng-model="surveySession.questionAnswers[11].answer" value="Average" type="radio" name="average11"> </td>
+<td> <input ng-model="surveySession.questionAnswers[11].answer" value="Good" type="radio" name="good11"> </td>
+<td> <input ng-model="surveySession.questionAnswers[11].answer" value="Excellent" type="radio" name="excellent11"> </td>
 </tr>
 
 <tr>
 <td><p>{{ surveySession.questionAnswers[12].question }}</p>
 
 </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[12].answer" value="Very Poor" type="radio" name="verypoor12"></td>
+<td> <input ng-model="surveySession.questionAnswers[12].answer" value="Poor" type="radio" name="poor12"> </td>
+<td> <input ng-model="surveySession.questionAnswers[12].answer" value="Average" type="radio" name="average12"> </td>
+<td> <input ng-model="surveySession.questionAnswers[12].answer" value="Good" type="radio" name="good12"> </td>
+<td> <input ng-model="surveySession.questionAnswers[12].answer" value="Excellent" type="radio" name="excellent12"> </td>
 </tr>
 
 <tr>
 <td><p>{{ surveySession.questionAnswers[13].question }}</p>
 
 </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[13].answer" value="Very Poor" type="radio" name="verypoor13"></td>
+<td> <input ng-model="surveySession.questionAnswers[13].answer" value="Poor" type="radio" name="poor13"> </td>
+<td> <input ng-model="surveySession.questionAnswers[13].answer" value="Average" type="radio" name="average13"> </td>
+<td> <input ng-model="surveySession.questionAnswers[13].answer" value="Good" type="radio" name="good13"> </td>
+<td> <input ng-model="surveySession.questionAnswers[13].answer" value="Excellent" type="radio" name="excellent13"> </td>
 </tr>
 
 <tr>
 <td rowspan="5" ><p>Influencing Skills</p></td>
 <td><p>{{ surveySession.questionAnswers[14].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[14].answer" value="Very Poor" type="radio" name="verypoor14"></td>
+<td> <input ng-model="surveySession.questionAnswers[14].answer" value="Poor" type="radio" name="poor14"> </td>
+<td> <input ng-model="surveySession.questionAnswers[14].answer" value="Average" type="radio" name="average14"> </td>
+<td> <input ng-model="surveySession.questionAnswers[14].answer" value="Good" type="radio" name="good14"> </td>
+<td> <input ng-model="surveySession.questionAnswers[14].answer" value="Excellent" type="radio" name="excellent14"> </td>
 </tr>
 
 <tr>
 <td><p>{{ surveySession.questionAnswers[15].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[15].answer" value="Very Poor" type="radio" name="verypoor15"></td>
+<td> <input ng-model="surveySession.questionAnswers[15].answer" value="Poor" type="radio" name="poor15"> </td>
+<td> <input ng-model="surveySession.questionAnswers[15].answer" value="Average" type="radio" name="average15"> </td>
+<td> <input ng-model="surveySession.questionAnswers[15].answer" value="Good" type="radio" name="good15"> </td>
+<td> <input ng-model="surveySession.questionAnswers[15].answer" value="Excellent" type="radio" name="excellent15"> </td>
 </tr>
 
 <tr>
 <td><p>{{ surveySession.questionAnswers[16].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[16].answer" value="Very Poor" type="radio" name="verypoor16"></td>
+<td> <input ng-model="surveySession.questionAnswers[16].answer" value="Poor" type="radio" name="poor16"> </td>
+<td> <input ng-model="surveySession.questionAnswers[16].answer" value="Average" type="radio" name="average16"> </td>
+<td> <input ng-model="surveySession.questionAnswers[16].answer" value="Good" type="radio" name="good16"> </td>
+<td> <input ng-model="surveySession.questionAnswers[16].answer" value="Excellent" type="radio" name="excellent16"> </td>
 </tr>
 
 <tr>
 <td><p>{{ surveySession.questionAnswers[17].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[17].answer" value="Very Poor" type="radio" name="verypoor17"></td>
+<td> <input ng-model="surveySession.questionAnswers[17].answer" value="Poor" type="radio" name="poor17"> </td>
+<td> <input ng-model="surveySession.questionAnswers[17].answer" value="Average" type="radio" name="average17"> </td>
+<td> <input ng-model="surveySession.questionAnswers[17].answer" value="Good" type="radio" name="good17"> </td>
+<td> <input ng-model="surveySession.questionAnswers[17].answer" value="Excellent" type="radio" name="excellent17"> </td>
 </tr>
 
 <tr>
 <td><p>{{ surveySession.questionAnswers[18].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[18].answer" value="Very Poor" type="radio" name="verypoor18"></td>
+<td> <input ng-model="surveySession.questionAnswers[18].answer" value="Poor" type="radio" name="poor18"> </td>
+<td> <input ng-model="surveySession.questionAnswers[18].answer" value="Average" type="radio" name="average18"> </td>
+<td> <input ng-model="surveySession.questionAnswers[18].answer" value="Good" type="radio" name="good18"> </td>
+<td> <input ng-model="surveySession.questionAnswers[18].answer" value="Excellent" type="radio" name="excellent18"> </td>
 </tr>
 
 <tr>
@@ -247,56 +250,56 @@
 <td><p>{{ surveySession.questionAnswers[19].question }}</p>
 
 </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[19].answer" value="Very Poor" type="radio" name="verypoor19"></td>
+<td> <input ng-model="surveySession.questionAnswers[19].answer" value="Poor" type="radio" name="poor19"> </td>
+<td> <input ng-model="surveySession.questionAnswers[19].answer" value="Average" type="radio" name="average19"> </td>
+<td> <input ng-model="surveySession.questionAnswers[19].answer" value="Good" type="radio" name="good19"> </td>
+<td> <input ng-model="surveySession.questionAnswers[19].answer" value="Excellent" type="radio" name="excellent19"> </td>
 </tr>
 
 <tr>
 <td><p>{{ surveySession.questionAnswers[20].question }}</p>
 
 </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[20].answer" value="Very Poor" type="radio" name="verypoor20"></td>
+<td> <input ng-model="surveySession.questionAnswers[20].answer" value="Poor" type="radio" name="poor20"> </td>
+<td> <input ng-model="surveySession.questionAnswers[20].answer" value="Average" type="radio" name="average20"> </td>
+<td> <input ng-model="surveySession.questionAnswers[20].answer" value="Good" type="radio" name="good20"> </td>
+<td> <input ng-model="surveySession.questionAnswers[20].answer" value="Excellent" type="radio" name="excellent20"> </td>
 </tr>
 
 <tr>
 <td><p>{{ surveySession.questionAnswers[21].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[21].answer" value="Very Poor" type="radio" name="verypoor21"></td>
+<td> <input ng-model="surveySession.questionAnswers[21].answer" value="Poor" type="radio" name="poor21"> </td>
+<td> <input ng-model="surveySession.questionAnswers[21].answer" value="Average" type="radio" name="average21"> </td>
+<td> <input ng-model="surveySession.questionAnswers[21].answer" value="Good" type="radio" name="good21"> </td>
+<td> <input ng-model="surveySession.questionAnswers[21].answer" value="Excellent" type="radio" name="excellent21"> </td>
 </tr>
 
 <tr>
 <td><p>{{ surveySession.questionAnswers[22].question }} </p>
 
 </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[22].answer" value="Very Poor" type="radio" name="verypoor22"></td>
+<td> <input ng-model="surveySession.questionAnswers[22].answer" value="Poor" type="radio" name="poor22"> </td>
+<td> <input ng-model="surveySession.questionAnswers[22].answer" value="Average" type="radio" name="average22"> </td>
+<td> <input ng-model="surveySession.questionAnswers[22].answer" value="Good" type="radio" name="good22"> </td>
+<td> <input ng-model="surveySession.questionAnswers[22].answer" value="Excellent" type="radio" name="excellent22"> </td>
 </tr>
 
 <tr>
 <td><p>{{ surveySession.questionAnswers[23].question }}</p></td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
+<td> <input ng-model="surveySession.questionAnswers[23].answer" value="Very Poor" type="radio" name="verypoor23"></td>
+<td> <input ng-model="surveySession.questionAnswers[23].answer" value="Poor" type="radio" name="poor23"> </td>
+<td> <input ng-model="surveySession.questionAnswers[23].answer" value="Average" type="radio" name="average23"> </td>
+<td> <input ng-model="surveySession.questionAnswers[23].answer" value="Good" type="radio" name="good23"> </td>
+<td> <input ng-model="surveySession.questionAnswers[23].answer" value="Excellent" type="radio" name="excellent23"> </td>
 </tr>
 
 </tbody>
 </table>
 
-<p><b>End Survey</b></p>
+<p><b>End Survey</b><button class="btn" ng-click="saveSurveySession()">Submit Survey</button></p>
   </body>
 </html>

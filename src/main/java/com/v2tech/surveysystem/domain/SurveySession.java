@@ -17,6 +17,8 @@ public class SurveySession extends Base{
 
 	String surveyType;
 	
+	String teamMemberName = "";
+	
 	boolean surveyCompleted;
 	
 	@ElementCollection

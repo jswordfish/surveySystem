@@ -164,14 +164,14 @@ public class SurveyManagementWebService {
 	@Path("/save/SurveySession")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public boolean saveOrUpdateEmployeeAndReturnEmployees(SurveySession surveySession){
+	public Long saveOrUpdateSurveySession(SurveySession surveySession){
 		try {
-			surveySessionService.saveOrUpdate(surveySession);
-			return true;
+			surveySession = (SurveySession) surveySessionService.saveOrUpdate(surveySession);
+			return surveySession.getId();
 		} catch (SurveyGenericException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
+			return -1l;
 		}
 	}
 
