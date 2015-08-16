@@ -166,6 +166,7 @@ public class SurveyManagementWebService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Long saveOrUpdateSurveySession(SurveySession surveySession){
 		try {
+			surveySession.setSurveyCompleted(true);
 			surveySession = (SurveySession) surveySessionService.saveOrUpdate(surveySession);
 			return surveySession.getId();
 		} catch (SurveyGenericException e) {

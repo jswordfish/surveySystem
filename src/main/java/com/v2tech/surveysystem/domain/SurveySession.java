@@ -21,6 +21,8 @@ public class SurveySession extends Base{
 	
 	boolean surveyCompleted;
 	
+	String surveySessionDate;
+	
 	@ElementCollection
 	List<DoubleQuestionAnswer> doubleQuestionAnswers = new ArrayList<DoubleQuestionAnswer>();
 	
@@ -78,6 +80,22 @@ public class SurveySession extends Base{
 
 	public void setSurveyCompleted(boolean surveyCompleted) {
 		this.surveyCompleted = surveyCompleted;
+	}
+
+	public String getTeamMemberName() {
+		return teamMemberName;
+	}
+
+	public void setTeamMemberName(String teamMemberName) {
+		this.teamMemberName = teamMemberName;
+	}
+
+	public String getSurveySessionDate() {
+		return surveySessionDate;
+	}
+
+	public void setSurveySessionDate(String surveySessionDate) {
+		this.surveySessionDate = surveySessionDate;
 	}
 	
 	

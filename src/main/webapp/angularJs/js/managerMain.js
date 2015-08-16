@@ -8,20 +8,20 @@ app.directive('helloWorld', function() {
   };
 });
 
-app.controller( 'ManagerController',  function($scope, $http, $window) {
+app.controller( 'ManagerController',  function($scope, $http, $window, $filter) {
     $scope.currentDate = new Date();
        console.log($window.localStorage.getItem('sNumber'));
     $scope.sessNo =  $window.localStorage.getItem('sNumber');
    
-    
 });
 
-app.controller('PlayerController', function($scope, $http, $window) {
+app.controller('PlayerController', function($scope, $http, $window, $filter) {
    $scope.currentDate = new Date();
    console.log('1');
    console.log('Full name in player controller' + $window.localStorage.getItem('fullName') );
    console.log('2');	    
- 
+   $scope.dt = $filter('date')( $scope.currentDate, "MM/dd/yyyyTHH:mm:ss");
+    console.log(' date is '+$scope.dt);
     
     $http.get('http://localhost/v2-survey-1.0-SNAPSHOT/ws/rest/surveyMgmtRestService/surveySessionForManagerComepency').
         success(function(data) {
@@ -30,6 +30,7 @@ app.controller('PlayerController', function($scope, $http, $window) {
             $scope.surveySession.user = $window.localStorage.getItem('fullName');
 	    $scope.surveySession.email = $window.localStorage.getItem('email');
 	    $scope.surveySession.surveyType = $window.localStorage.getItem('surveyType');
+	    $scope.surveySession.surveySessionDate = $scope.dt;
 	    console.log(' 1' +$scope.surveySession.user);
 	     console.log(' 2' +$scope.surveySession.email);
 	     console.log(' 3' +$scope.surveySession.surveyType);
@@ -37,6 +38,7 @@ app.controller('PlayerController', function($scope, $http, $window) {
         });
 	
 	$scope.saveSurveySession = function() {
+	
 		$http.post('http://localhost/v2-survey-1.0-SNAPSHOT/ws/rest/surveyMgmtRestService/save/SurveySession', $scope.surveySession).
 		success(function(data) {
 		  

@@ -20,12 +20,12 @@
 
 <tr>
 <td><p>Team Member’s Name:</p></td>
-<td> </td>
+<td> <input type="text" placeholder="Enter Team Member's name" required  ng-model="surveySession.teamMemberName" required</td>
 </tr>
 
 <tr>
 <td><p>Date:</p></td>
-<td> {{currentDate | date:'yyyy-MM-dd'}} </td>
+<td> {{currentDate | date:'MM-dd-yyyyTHH:mm:ss'}} </td>
 </tr>
 
 </tbody>

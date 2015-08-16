@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html >
+<html ng-app="myApp" ng-controller="InitController">
   <head>
+  
+    <script src="js/1.0.7/angular.min.js"></script>
+
+    <script src="js/managerMain.js"></script>
     <meta charset="UTF-8">
     <title>Login Form</title>
     
@@ -1801,22 +1805,28 @@ body>#login #dont_have_an_account a:hover { border-bottom: 2px solid #f90 }
   <body>
 
     <div id="login">
-  <form id="login_form">
+  <form id="login_form" ng-submit="navigateToFillSurvey()()">
     <div class="field_container">
-      <input type="email" placeholder="Email Address">
+      <input type="email" placeholder="Email Address" required  ng-model="email">
     </div>
     
     <div class="field_container">
-      <input type="text" placeholder="Full Name">
+      <input type="text" placeholder="Full Name" required  ng-model="fullName">
       
     </div>
     
     <div class="field_container">
-      <input type="text" placeholder="SurveyType">
-      <button id="sign_in_button">
-        <span class="button_text">Sign In</span>
+    <select ng-model="surveyType" ng-options="opt as opt for opt in ['ManagerCompetencyAssessment', 'ParticipantCompetencyAssessment', 'ParticipantLeadershipStyle']" required>
+	  <option></option>
+	</select>
+    
+       <button id="sign_in_button" type="submit">
+        <span class="button_text">Select Survey Type and Click to begin</span>
       </button>
+      
     </div>
+    
+   
     
     
 </form>
