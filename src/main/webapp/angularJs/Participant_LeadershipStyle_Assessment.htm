@@ -1,6 +1,16 @@
+<!doctype html>
+<html ng-app="myApp" ng-controller="PlayerController">
+<head>
+    <script src="js/1.0.7/angular.min.js"></script>
+
+    <script src="js/managerMain.js"></script>
+
+  </head>
+  <body>
+
 <p><b>Leadership Style Questionnaire</b></p>
 
-<p>Put an ‘x’ in the clear box to the left of the statement in each pair that you think most accurately describes you. Sometimes you may think neither or both apply. Nevertheless, choose the statement which most closely describes you. After completing all 30, please add up the number of Xs in each column.</p>
+<p>Select an option in the clear box to the left of the statement in each pair that you think most accurately describes you. Sometimes you may think neither or both apply. Nevertheless, choose the statement which most closely describes you. After completing all 30, please click (bottom) to add up the number of Xs in each column before submitting.</p>
 
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
@@ -19,20 +29,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>1</p></td>
+<td rowspan="2" width="5%"><p>{{ surveySession.doubleQuestionAnswers[0].context }}</p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[0].questionAnswer1.answer" value="T" type="radio" name="T"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to tell people what is on my mind.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[0].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[0].questionAnswer1.answer" value="A" type="radio" name="A"> </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to keep things to myself.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[0].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -41,20 +51,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2"  width="5%"><p>2</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[1].context }}</p></p></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[1].questionAnswer1.answer" value="C" type="radio" name="C0"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I see myself as cool and guarded with others.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[1].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
 <td valign="top" > </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I see myself as warm and friendly with others.</p></td>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[1].questionAnswer1.answer" value="E" type="radio" name="E0"></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[1].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -63,20 +73,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>3</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[2].context }}</p></p></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to show my emotions to others.</p></td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[2].questionAnswer1.answer" value="E" type="radio" name="E1"></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[2].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
 <td valign="top" > </td>
 <td valign="top" > </td>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[2].questionAnswer1.answer" value="C" type="radio" name="C1"> </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to keep my emotions “inside”.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[2].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -85,20 +95,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>4</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[3].context }}</p></p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[3].questionAnswer1.answer" value="T" type="radio" name="T3">  </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I see myself as fast-paced.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[3].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[3].questionAnswer1.answer" value="A" type="radio" name="A3"> </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I see myself as slow-paced.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[3].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -107,20 +117,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>5</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[4].context }}</p></p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[4].questionAnswer1.answer" value="T" type="radio" name="T4"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I see myself as a risk-taker in most situations.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[4].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[4].questionAnswer1.answer" value="A" type="radio" name="A4"> </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I view myself as one who avoids or minimizes risk in most situations.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[4].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -129,20 +139,43 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>6</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[5].context }}</p></p></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I see myself as playful and fun-loving.</p></td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[5].questionAnswer1.answer" value="E" type="radio" name="E5"> </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[5].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
 <td valign="top" > </td>
 <td valign="top" > </td>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[5].questionAnswer1.answer" value="C" type="radio" name="C5"> </td>
+<td valign="top" > </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[5].questionAnswer2.question }}</p></td>
+</tr>
+
+</tbody>
+</table>
+</table>
+<br>
+<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
+<tbody>
+<tr>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[6].context }}</p></p></td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[6].questionAnswer1.answer" value="A" type="radio" name="A6"></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[6].questionAnswer1.question }}</p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[6].questionAnswer1.answer" value="C" type="radio" name="C6"></td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" ><p>I see myself as serious and thoughtful.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[6].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -151,42 +184,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>7</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[7].context }}</p></p></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to wait for others to initiate interactions with me.</p></td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[7].questionAnswer1.answer" value="E" type="radio" name="E7"> </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[7].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
 <td valign="top" > </td>
 <td valign="top" > </td>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[7].questionAnswer1.answer" value="C" type="radio" name="C7"> </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to initiate interactions with others.</p></td>
-</tr>
-
-</tbody>
-</table>
-<br>
-<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
-<tbody>
-<tr>
-<td rowspan="2" width="5%"><p>8</p></td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to talk in terms of opinions.</p></td>
-</tr>
-
-<tr>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to talk in terms of facts</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[7].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -195,42 +206,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>9</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[8].context }}</p></p></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to like to work with others.</p></td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[8].questionAnswer1.answer" value="E" type="radio" name="E8"> </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[8].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
 <td valign="top" > </td>
 <td valign="top" > </td>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[8].questionAnswer1.answer" value="C" type="radio" name="C8"> </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to like to work alone.</p></td>
-</tr>
-
-</tbody>
-</table>
-<br>
-<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
-<tbody>
-<tr>
-<td rowspan="2" width="5%"><p>10</p></td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to take charge of a situation.</p></td>
-</tr>
-
-<tr>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to remain in the background.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[8].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -239,42 +228,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>11</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[9].context }}</p></p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[9].questionAnswer1.answer" value="T" type="radio" name="T9"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I see myself as outgoing and direct.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[9].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[9].questionAnswer1.answer" value="A" type="radio" name="A9"></td>
 <td valign="top" > </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I see myself as quiet and moderate.</p></td>
-</tr>
-
-</tbody>
-</table>
-<br>
-<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
-<tbody>
-<tr>
-<td rowspan="2" width="5%"><p>12</p></td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to focus on the outcome or results.</p></td>
-</tr>
-
-<tr>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to focus on the process or the method.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[9].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -283,42 +250,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>13</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[10].context }}</p></p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[10].questionAnswer1.answer" value="T" type="radio" name="T10"></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to be more interested in how people feel.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[10].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[10].questionAnswer1.answer" value="A" type="radio" name="A10"> </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to be more interested in what people think.</p></td>
-</tr>
-
-</tbody>
-</table>
-<br>
-<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
-<tbody>
-<tr>
-<td rowspan="2" width="5%"><p>14</p></td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to be casual and informal in my dealings with others.</p></td>
-</tr>
-
-<tr>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to be business-like and formal in my dealings with others.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[10].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -327,42 +272,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>15</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[11].context }}</p></p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[11].questionAnswer1.answer" value="T" type="radio" name="T11"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to avoid personal involvement with people.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[11].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[11].questionAnswer1.answer" value="A" type="radio" name="A11"> </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to deal with people in a more personal way.</p></td>
-</tr>
-
-</tbody>
-</table>
-<br>
-<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
-<tbody>
-<tr>
-<td rowspan="2" width="5%"><p>16</p></td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to confront conflict head-on.</p></td>
-</tr>
-
-<tr>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to avoid conflict and confrontation.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[11].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -371,42 +294,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>17</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[12].context }}</p></p></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to get impatient with others.</p></td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[12].questionAnswer1.answer" value="E" type="radio" name="E12"></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[12].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
 <td valign="top" > </td>
 <td valign="top" > </td>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[12].questionAnswer1.answer" value="C" type="radio" name="C12"></td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I see myself as patient with others.</p></td>
-</tr>
-
-</tbody>
-</table>
-<br>
-<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
-<tbody>
-<tr>
-<td rowspan="2" width="5%"><p>18</p></td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to have a lot of interactions with others.</p></td>
-</tr>
-
-<tr>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to have limited interactions with others.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[12].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -415,42 +316,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>19</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[13].context }}</p></p></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to be more task oriented.</p></td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[13].questionAnswer1.answer" value="E" type="radio" name="E13"></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[13].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
 <td valign="top" > </td>
 <td valign="top" > </td>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[13].questionAnswer1.answer" value="C" type="radio" name="C13"></td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to be more relationship oriented.</p></td>
-</tr>
-
-</tbody>
-</table>
-<br>
-<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
-<tbody>
-<tr>
-<td rowspan="2" width="5%"><p>20</p></td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to be standoffish and aloof with others.</p></td>
-</tr>
-
-<tr>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to be open and disclosing with others.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[13].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -459,42 +338,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>21</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[14].context }}</p></p></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[14].questionAnswer1.answer" value="C" type="radio" name="C14"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I see myself as more competitive with others.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[14].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
 <td valign="top" > </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I see myself as more cooperative in dealing with others.</p></td>
-</tr>
-
-</tbody>
-</table>
-<br>
-<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
-<tbody>
-<tr>
-<td rowspan="2" width="5%"><p>22</p></td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I see myself as more reserved in dealing with others.</p></td>
-</tr>
-
-<tr>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I see myself as more forceful with other people.</p></td>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[14].questionAnswer1.answer" value="E" type="radio" name="E14"></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[14].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -503,42 +360,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>23</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[15].context }}</p></p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[15].questionAnswer1.answer" value="T" type="radio" name="T15"></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to be indifferent to the feelings of others.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[15].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[15].questionAnswer1.answer" value="A" type="radio" name="A15"> </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to get involved with the feelings of others.</p></td>
-</tr>
-
-</tbody>
-</table>
-<br>
-<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
-<tbody>
-<tr>
-<td rowspan="2" width="5%"><p>24</p></td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to make quick decisions.</p></td>
-</tr>
-
-<tr>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to take longer in making decisions.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[15].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -547,20 +382,196 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>25</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[16].context }}</p></p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[16].questionAnswer1.answer" value="T" type="radio" name="T16"></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[16].questionAnswer1.question }}</p></td>
+</tr>
+
+<tr>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[16].questionAnswer1.answer" value="A" type="radio" name="A16"></td>
+<td valign="top" > </td>
+<td valign="top" > </td>
+<td valign="top" > </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[16].questionAnswer2.question }}</p></td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
+<tbody>
+<tr>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[17].context }}</p></p></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[17].questionAnswer1.answer" value="E" type="radio" name="E17"></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[17].questionAnswer1.question }}</p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" > </td>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[17].questionAnswer1.answer" value="C" type="radio" name="C17"> </td>
+<td valign="top" > </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[17].questionAnswer2.question }}</p></td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
+<tbody>
+<tr>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[18].context }}</p></p></td>
 <td valign="top" width="10%"> </td>
-<td valign="top" ><p>I see myself as easy-going and tolerant.</p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[18].questionAnswer1.answer" value="C" type="radio" name="C18"> </td>
+<td valign="top" width="10%"> </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[18].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
 <td valign="top" > </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[18].questionAnswer1.answer" value="E" type="radio" name="E18"></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[18].questionAnswer2.question }}</p></td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
+<tbody>
+<tr>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[19].context }}</p></p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[19].questionAnswer1.answer" value="C" type="radio" name="C19"></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[19].questionAnswer1.question }}</p></td>
+</tr>
+
+<tr>
 <td valign="top" > </td>
-<td valign="top" ><p>I see myself as requiring of myself and others.</p></td>
+<td valign="top" > </td>
+<td valign="top" > </td>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[19].questionAnswer1.answer" value="E" type="radio" name="E19"></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[19].questionAnswer2.question }}</p></td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
+<tbody>
+<tr>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[20].context }}</p></p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[20].questionAnswer1.answer" value="T" type="radio" name="T20"></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[20].questionAnswer1.question }}</p></td>
+</tr>
+
+<tr>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[20].questionAnswer1.answer" value="A" type="radio" name="A20"></td>
+<td valign="top" > </td>
+<td valign="top" > </td>
+<td valign="top" > </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[20].questionAnswer2.question }}</p></td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
+<tbody>
+<tr>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[21].context }}</p></p></td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[21].questionAnswer1.answer" value="A" type="radio" name="A21"></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[21].questionAnswer1.question }}</p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[21].questionAnswer1.answer" value="T" type="radio" name="T21"> </td>
+<td valign="top" > </td>
+<td valign="top" > </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[21].questionAnswer2.question }}</p></td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
+<tbody>
+<tr>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[22].context }}</p></p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[22].questionAnswer1.answer" value="C" type="radio" name="C22"> </td>
+<td valign="top" width="10%"> </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[22].questionAnswer1.question }}</p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" > </td>
+<td valign="top" > </td>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[22].questionAnswer1.answer" value="E" type="radio" name="E22"> </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[22].questionAnswer2.question }}</p></td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
+<tbody>
+<tr>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[23].context }}</p></p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[23].questionAnswer1.answer" value="T" type="radio" name="T23"></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[23].questionAnswer1.question }}</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[23].questionAnswer1.answer" value="A" type="radio" name="A23"> </td>
+<td valign="top" > </td>
+<td valign="top" > </td>
+<td valign="top" > </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[23].questionAnswer2.question }}</p></td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<table border="1" cellspacing="0" cellpadding="0" width="70%"> 
+<tbody>
+<tr>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[24].context }}</p></p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[24].questionAnswer1.answer" value="E" type="radio" name="E24"> </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[24].questionAnswer1.question }}</p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" > </td>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[24].questionAnswer1.answer" value="C" type="radio" name="C24"></td>
+<td valign="top" > </td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[24].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -570,20 +581,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>26</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[25].context }}</p></p></td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[25].questionAnswer1.answer" value="A" type="radio" name="A25"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to follow the lead of others.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[25].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
 <td valign="top" > </td>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[25].questionAnswer1.answer" value="T" type="radio" name="T25"></td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to direct the actions of others.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[25].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -592,20 +603,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>27</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[26].context }}</p></p></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[26].questionAnswer1.answer" value="C" type="radio" name="C26"></td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to be a cautious and measured communicator.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[26].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
 <td valign="top" > </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to be an impulsive and dramatic communicator.</p></td>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[26].questionAnswer1.answer" value="E" type="radio" name="E26"></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[26].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -614,20 +625,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>28</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[27].context }}</p></p></td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[27].questionAnswer1.answer" value="A" type="radio" name="A27"></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to keep my opinions and thoughts to myself.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[27].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
 <td valign="top" > </td>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[27].questionAnswer1.answer" value="T" type="radio" name="T27"></td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to readily share my options and ideas.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[27].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -636,20 +647,20 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>29</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[28].context }}</p></p></td>
+<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"><input ng-model="surveySession.doubleQuestionAnswers[28].questionAnswer1.answer" value="T" type="radio" name="T28"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to want to do things my way when I work with others.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[28].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[28].questionAnswer1.answer" value="A" type="radio" name="A28"> </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to be accepting when I work with other people.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[28].questionAnswer2.question }}</p></td>
 </tr>
 
 </tbody>
@@ -658,33 +669,36 @@
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
-<td rowspan="2" width="5%"><p>30</p></td>
+<td rowspan="2"  width="5%"><p>{{ surveySession.doubleQuestionAnswers[29].context }}</p></p></td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
 <td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" ><p>I tend to share my personal feelings with others.</p></td>
+<td valign="top" width="10%"> <input ng-model="surveySession.doubleQuestionAnswers[29].questionAnswer1.answer" value="E" type="radio" name="E29"></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[29].questionAnswer1.question }}</p></td>
 </tr>
 
 <tr>
 <td valign="top" > </td>
 <td valign="top" > </td>
+<td valign="top" ><input ng-model="surveySession.doubleQuestionAnswers[29].questionAnswer1.answer" value="C" type="radio" name="C29"> </td>
 <td valign="top" > </td>
-<td valign="top" > </td>
-<td valign="top" ><p>I tend to keep my personal feelings to myself.</p></td>
+<td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[29].questionAnswer2.question }}</p></td>
 </tr>
+
+
 
 </tbody>
 </table>
+<br>
 <br>
 <table border="1" cellspacing="0" cellpadding="0" width="70%"> 
 <tbody>
 <tr>
 <td rowspan="2" width="5%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
-<td valign="top" width="10%"> </td>
+<td valign="top" width="10%"> $scope.surveySession.numA </td>
+<td valign="top" width="10%"> $scope.surveySession.numT  </td>
+<td valign="top" width="10%"> $scope.surveySession.numC </td>
+<td valign="top" width="10%"> $scope.surveySession.numE </td>
 <td valign="top" ><p>Total Score</p></td>
 </tr>
 
@@ -693,11 +707,16 @@
 <td valign="top" ><p>T</p></td>
 <td valign="top" ><p>C</p></td>
 <td valign="top" ><p>E</p></td>
-<td valign="top" > </td>
+<td valign="top" > <button class="btn" ng-click="calcuateScoreLeadershipSurvey()">Calculate Score</button></td>
 </tr>
 
 </tbody>
 </table>
 
-<p><br />End Survey
+
+
+<p><br />
 </p>
+<p><b>End Survey</b><button class="btn" ng-click="saveSurveySession()">Submit Survey</button></p>
+  </body>
+</html>

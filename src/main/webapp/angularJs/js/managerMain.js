@@ -53,7 +53,19 @@ app.controller('PlayerController', function($scope, $http, $window, $filter) {
 		});
 	}
 	else if($scope.type == 'ParticipantLeadershipStyle'){
-	
+		$http.get('http://localhost/v2-survey-1.0-SNAPSHOT/ws/rest/surveyMgmtRestService/surveySessionForParticipantLeadership').
+			success(function(data) {
+			    $scope.surveySession = data;
+			    
+			    $scope.surveySession.user = $window.localStorage.getItem('fullName');
+			    $scope.surveySession.email = $window.localStorage.getItem('email');
+			    $scope.surveySession.surveyType = $window.localStorage.getItem('surveyType');
+			    $scope.surveySession.surveySessionDate = $scope.dt;
+			    console.log(' 1' +$scope.surveySession.user);
+			     console.log(' 2' +$scope.surveySession.email);
+			     console.log(' 3' +$scope.surveySession.surveyType);
+		    
+		});
 	}
     
     
@@ -67,6 +79,20 @@ app.controller('PlayerController', function($scope, $http, $window, $filter) {
 		    $window.localStorage.setItem('sNumber', JSON.stringify(data) );
 		    console.log($window.localStorage.getItem('sNumber'));
 		    $window.location.href = 'thankYou.html';
+		});
+	};
+	
+	$scope.calcuateScoreLeadershipSurvey = function() {
+	
+		$http.post('http://localhost/v2-survey-1.0-SNAPSHOT/ws/rest/surveyMgmtRestService/get/ResultCountLeadership', $scope.surveySession).
+		success(function(data) {
+		  $scope.leadershipSurveyResult = data;
+		    $scope.surveySession.numA = $scope.leadershipSurveyResult.numA;
+		    $scope.surveySession.numT = $scope.leadershipSurveyResult.numT;
+		    $scope.surveySession.numC = $scope.leadershipSurveyResult.numC;
+		    $scope.surveySession.numE = $scope.leadershipSurveyResult.numE;
+		    console.log( JSON.stringify(data));
+		    console.log(  ' ' +$scope.surveySession.numA );
 		});
 	};
   

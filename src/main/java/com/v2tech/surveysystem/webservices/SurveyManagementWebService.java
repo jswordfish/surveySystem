@@ -1,6 +1,7 @@
 package com.v2tech.surveysystem.webservices;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.v2tech.surveysystem.common.SurveyGenericException;
 import com.v2tech.surveysystem.domain.DoubleQuestionAnswer;
+import com.v2tech.surveysystem.domain.LeadershipSurveyResult;
 import com.v2tech.surveysystem.domain.QuestionAnswer;
 import com.v2tech.surveysystem.domain.SurveySession;
 import com.v2tech.surveysystem.service.SurveySessionService;
@@ -56,7 +58,7 @@ public class SurveyManagementWebService {
 		QuestionAnswer questionAnswer4= new QuestionAnswer();
 		questionAnswer4.setQuestion("I see myself as warm and friendly with others.");
 		questionAnswer4.setContext("2");
-		doubleQuestionAnswer1.setContext("2");
+		doubleQuestionAnswer2.setContext("2");
 		doubleQuestionAnswer2.setQuestionAnswer1(questionAnswer3);
 		doubleQuestionAnswer2.setQuestionAnswer2(questionAnswer4);
 		
@@ -359,10 +361,10 @@ public class SurveyManagementWebService {
 		
 		DoubleQuestionAnswer doubleQuestionAnswer30 = new DoubleQuestionAnswer();
 		QuestionAnswer questionAnswer59= new QuestionAnswer();
-		questionAnswer59.setQuestion("I tend to want to do things my way when I work with others.");
+		questionAnswer59.setQuestion("I tend to share my personal feelings with others.");
 		questionAnswer59.setContext("30");
 		QuestionAnswer questionAnswer60= new QuestionAnswer();
-		questionAnswer60.setQuestion("I tend to be accepting when I work with other people.");
+		questionAnswer60.setQuestion("I tend to keep my personal feelings to myself.");
 		questionAnswer60.setContext("30");
 		doubleQuestionAnswer30.setContext("30");
 		doubleQuestionAnswer30.setQuestionAnswer1(questionAnswer59);
@@ -683,6 +685,13 @@ public class SurveyManagementWebService {
 	public Long saveOrUpdateSurveySession(SurveySession surveySession){
 		try {
 			surveySession.setSurveyCompleted(true);
+			if(surveySession.getSurveyType().equalsIgnoreCase("ParticipantLeadershipStyle")){
+				LeadershipSurveyResult result = populateLeadershipSurveySessionWithResults(surveySession);
+				surveySession.setNumA(result.getNumA());
+				surveySession.setNumC(result.getNumC());
+				surveySession.setNumE(result.getNumE());
+				surveySession.setNumT(result.getNumT());
+			}
 			surveySession = (SurveySession) surveySessionService.saveOrUpdate(surveySession);
 			return surveySession.getId();
 		} catch (SurveyGenericException e) {
@@ -691,5 +700,46 @@ public class SurveyManagementWebService {
 			return -1l;
 		}
 	}
-
+//LeadershipSurveyResult
+	
+	@POST
+	@Path("/get/ResultCountLeadership")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public LeadershipSurveyResult populateLeadershipSurveySessionWithResults(SurveySession surveySession){
+		LeadershipSurveyResult result = new LeadershipSurveyResult();
+		Iterator<DoubleQuestionAnswer> itr = surveySession.getDoubleQuestionAnswers().iterator();
+			while(itr.hasNext()){
+				DoubleQuestionAnswer q = itr.next();
+				QuestionAnswer qa1 = q.getQuestionAnswer1();
+				QuestionAnswer qa2 = q.getQuestionAnswer2();
+				if(qa1.getAnswer().equalsIgnoreCase("A")){
+					result.setNumA(result.getNumA() + 1);
+				}
+				else if(qa1.getAnswer().equalsIgnoreCase("T")){
+					result.setNumT(result.getNumT() + 1);
+				}
+				else if(qa1.getAnswer().equalsIgnoreCase("C")){
+					result.setNumC(result.getNumC() + 1);
+				}
+				else if(qa1.getAnswer().equalsIgnoreCase("E")){
+					result.setNumE(result.getNumE() + 1);
+				}
+				
+				if(qa2.getAnswer().equalsIgnoreCase("A")){
+					result.setNumA(result.getNumA() + 1);
+				}
+				else if(qa2.getAnswer().equalsIgnoreCase("T")){
+					result.setNumT(result.getNumT() + 1);
+				}
+				else if(qa2.getAnswer().equalsIgnoreCase("C")){
+					result.setNumC(result.getNumC() + 1);
+				}
+				else if(qa2.getAnswer().equalsIgnoreCase("E")){
+					result.setNumE(result.getNumE() + 1);
+				}
+			}
+		
+		return result;
+	}
 }

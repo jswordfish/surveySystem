@@ -7,11 +7,11 @@ public class QuestionAnswer {
 	Long id;
 	
 	@Column(nullable=false, length=500)
-	private String question;
+	private String question = "";
 	
-	private String answer;
+	private String answer = "";
 	
-	private String context;
+	private String context = "";
 	
 	//private boolean isAnswered = false;
 
