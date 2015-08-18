@@ -5,13 +5,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
-
-import com.v2tech.surveysystem.service.servicehelpers.excel.Template;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +23,8 @@ import com.v2tech.surveysystem.domain.QuestionAnswer;
 import com.v2tech.surveysystem.domain.SurveySession;
 import com.v2tech.surveysystem.service.SurveySessionService;
 import com.v2tech.surveysystem.service.servicehelpers.email.EmailService;
+import com.v2tech.surveysystem.service.servicehelpers.excel.Template;
+import com.v2tech.surveysystem.util.EmailThread;
 @Service("surveyService")
 @Transactional(propagation= Propagation.REQUIRED, rollbackFor=SurveyGenericException.class)
 public class SurveySessionServiceImpl extends SurveyGenericServiceImpl<Long, SurveySession> implements SurveySessionService{
@@ -87,7 +86,10 @@ public class SurveySessionServiceImpl extends SurveyGenericServiceImpl<Long, Sur
 								Template.createPdfTemplate1(sessionNumber, map);
 								if (surveySession.isSurveyCompleted() == true)
 									{
-										EmailService.sendEmail(surveySession);
+									//EmailService.sendEmail(surveySession);
+									EmailThread email = new EmailThread(surveySession);
+									Thread thread = new Thread(email);
+									thread.start();
 									}
 							}
 						else
@@ -96,7 +98,9 @@ public class SurveySessionServiceImpl extends SurveyGenericServiceImpl<Long, Sur
 								Template.createPdfTemplate2(sessionNumber, map);
 								if (surveySession.isSurveyCompleted() == true)
 								{
-									EmailService.sendEmail(surveySession);
+									EmailThread email = new EmailThread(surveySession);
+									Thread thread = new Thread(email);
+									thread.start();
 								}
 							}
 						return surveySession;
@@ -136,7 +140,9 @@ public class SurveySessionServiceImpl extends SurveyGenericServiceImpl<Long, Sur
 						Template.createPdfTemplate3(sessionNumber, map);
 						if (surveySession.isSurveyCompleted() == true)
 						{
-							EmailService.sendEmail(surveySession);
+							EmailThread email = new EmailThread(surveySession);
+							Thread thread = new Thread(email);
+							thread.start();
 						}
 						return surveySession;
 					}
