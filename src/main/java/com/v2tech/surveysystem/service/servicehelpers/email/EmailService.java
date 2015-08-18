@@ -42,7 +42,7 @@ public class EmailService
 					email.addCc(surveySession.getEmail());
 					email.setFrom(sendFrom, "Shezar Admin");
 					email.setSubject("Survey Response Submitted by "+surveySession.getUser());
-					email.setMsg("Dear "+adminName+",\n\n, Please find attached the survey response as submitted by "+surveySession.getUser()+".\n\n Thanks and Regards,\n"+sendFromName);
+					email.setMsg("Dear "+adminName+",\n\n Please find attached the survey response as submitted by "+surveySession.getUser()+".\n\n Thanks and Regards,\nAdmin - ShezarTech");
 					email.setAuthenticator(new DefaultAuthenticator(sendFrom, sendFromPwd)	);
 					email.setTLS(true);
 					//email.setSmtpPort(Integer.parseInt(smtpPort));

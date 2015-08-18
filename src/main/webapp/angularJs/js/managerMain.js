@@ -1,17 +1,20 @@
 var app = angular.module('myApp', []);
 
-app.directive('helloWorld', function() {
-  return {
-      restrict: 'AE',
-      replace: 'true',
-      template: '<h3>Hello World!!</h3>'
-  };
-});
+
 
 app.controller( 'ManagerController',  function($scope, $http, $window, $filter) {
     $scope.currentDate = new Date();
        console.log($window.localStorage.getItem('sNumber'));
     $scope.sessNo =  $window.localStorage.getItem('sNumber');
+    
+    $scope.gobackToLoginPage = function() {
+    $window.localStorage.setItem('fullName', '' );
+	$window.localStorage.setItem('email', '' );
+	$window.localStorage.setItem('surveyType', '' );
+	$window.localStorage.setItem('sNumber', '');
+	$window.location.href = 'index.html';	
+		
+	};
    
 });
 
