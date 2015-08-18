@@ -23,7 +23,7 @@ app.controller('PlayerController', function($scope, $http, $window, $filter) {
     $scope.type = $window.localStorage.getItem('surveyType');
     
 	if($scope.type == 'ManagerCompetencyAssessment'){
-		$http.get('http://localhost/v2-survey-1.0-SNAPSHOT/ws/rest/surveyMgmtRestService/surveySessionForManagerComepency').
+		$http.get('../ws/rest/surveyMgmtRestService/surveySessionForManagerComepency').
 			success(function(data) {
 			    $scope.surveySession = data;
 			    
@@ -38,7 +38,7 @@ app.controller('PlayerController', function($scope, $http, $window, $filter) {
 		});
 	}
 	else if($scope.type == 'ParticipantCompetencyAssessment'){
-		$http.get('http://localhost/v2-survey-1.0-SNAPSHOT/ws/rest/surveyMgmtRestService/surveySessionForParticipantCompetency').
+		$http.get('../ws/rest/surveyMgmtRestService/surveySessionForParticipantCompetency').
 			success(function(data) {
 			    $scope.surveySession = data;
 			    
@@ -53,7 +53,7 @@ app.controller('PlayerController', function($scope, $http, $window, $filter) {
 		});
 	}
 	else if($scope.type == 'ParticipantLeadershipStyle'){
-		$http.get('http://localhost/v2-survey-1.0-SNAPSHOT/ws/rest/surveyMgmtRestService/surveySessionForParticipantLeadership').
+		$http.get('../ws/rest/surveyMgmtRestService/surveySessionForParticipantLeadership').
 			success(function(data) {
 			    $scope.surveySession = data;
 			    
@@ -72,7 +72,7 @@ app.controller('PlayerController', function($scope, $http, $window, $filter) {
 	
 	$scope.saveSurveySession = function() {
 	
-		$http.post('http://localhost/v2-survey-1.0-SNAPSHOT/ws/rest/surveyMgmtRestService/save/SurveySession', $scope.surveySession).
+		$http.post('../ws/rest/surveyMgmtRestService/save/SurveySession', $scope.surveySession).
 		success(function(data) {
 		  
 		    
@@ -84,7 +84,7 @@ app.controller('PlayerController', function($scope, $http, $window, $filter) {
 	
 	$scope.calcuateScoreLeadershipSurvey = function() {
 	
-		$http.post('http://localhost/v2-survey-1.0-SNAPSHOT/ws/rest/surveyMgmtRestService/get/ResultCountLeadership', $scope.surveySession).
+		$http.post('../ws/rest/surveyMgmtRestService/get/ResultCountLeadership', $scope.surveySession).
 		success(function(data) {
 		  $scope.leadershipSurveyResult = data;
 		    $scope.surveySession.numA = $scope.leadershipSurveyResult.numA;

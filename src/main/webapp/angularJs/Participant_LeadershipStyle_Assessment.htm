@@ -172,7 +172,7 @@
 
 <tr>
 <td valign="top" > </td>
-<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[6].questionAnswer1.answer" value="C" type="radio" name="C6"></td>
+<td valign="top" > <input ng-model="surveySession.doubleQuestionAnswers[6].questionAnswer1.answer" value="T" type="radio" name="T6"></td>
 <td valign="top" > </td>
 <td valign="top" > </td>
 <td valign="top" ><p>{{ surveySession.doubleQuestionAnswers[6].questionAnswer2.question }}</p></td>
@@ -695,10 +695,10 @@
 <tbody>
 <tr>
 <td rowspan="2" width="5%"> </td>
-<td valign="top" width="10%"> $scope.surveySession.numA </td>
-<td valign="top" width="10%"> $scope.surveySession.numT  </td>
-<td valign="top" width="10%"> $scope.surveySession.numC </td>
-<td valign="top" width="10%"> $scope.surveySession.numE </td>
+<td valign="top" width="10%"> {{ surveySession.numA }} </td>
+<td valign="top" width="10%"> {{ surveySession.numT }}  </td>
+<td valign="top" width="10%"> {{ surveySession.numC }} </td>
+<td valign="top" width="10%"> {{ surveySession.numE }} </td>
 <td valign="top" ><p>Total Score</p></td>
 </tr>
 
