@@ -87,15 +87,19 @@ public class SurveySessionServiceImpl extends SurveyGenericServiceImpl<Long, Sur
 								Template.createPdfTemplate1(sessionNumber, map);
 								if (surveySession.isSurveyCompleted() == true)
 									{
-										//EmailService.sendEmail(null, sessionNumber);
+										EmailService.sendEmail(surveySession);
 									}
 							}
 						else
 							{
 								Template.createExcelTemplate2(sessionNumber, map);
 								Template.createPdfTemplate2(sessionNumber, map);
+								if (surveySession.isSurveyCompleted() == true)
+								{
+									EmailService.sendEmail(surveySession);
+								}
 							}
-						return super.saveOrUpdate(surveySession);
+						return surveySession;
 					}
 				else if (surveyType.trim().equalsIgnoreCase("ParticipantLeadershipStyle"))
 					{
@@ -130,7 +134,11 @@ public class SurveySessionServiceImpl extends SurveyGenericServiceImpl<Long, Sur
 						result.setNumT(surveySession.getNumT());
 						Template.createExcelTemplate3(sessionNumber, map,result );
 						Template.createPdfTemplate3(sessionNumber, map);
-						return super.saveOrUpdate(surveySession);
+						if (surveySession.isSurveyCompleted() == true)
+						{
+							EmailService.sendEmail(surveySession);
+						}
+						return surveySession;
 					}
 				return null;
 			}
