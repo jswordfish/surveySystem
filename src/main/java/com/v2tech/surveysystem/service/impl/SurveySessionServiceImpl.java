@@ -45,6 +45,19 @@ public class SurveySessionServiceImpl extends SurveyGenericServiceImpl<Long, Sur
     public void setEntityManagerOnDao(EntityManager entityManager){
     	surveySessionDao.setEntityManager(entityManager);
     }
+    
+    public boolean isEmailPresent(String email, String surveyType)  throws SurveyGenericException  {
+	    Map<String, String> params = new HashMap<>();
+	    params.put("email", email);
+	    params.put("surveyType", surveyType);
+	    String query = "SurveySession.findSurveySessionByEmailAndSurveyType";
+	    List<SurveySession> surveySessions = super.findByNamedQueryAndNamedParams(query, params);
+	    if(surveySessions != null && surveySessions.size() > 0){
+	    	return true;
+	    }
+	    
+	    return false;
+    }
 
     @javax.transaction.Transactional
     public SurveySession saveOrUpdate(SurveySession surveySession) throws SurveyGenericException
@@ -82,8 +95,8 @@ public class SurveySessionServiceImpl extends SurveyGenericServiceImpl<Long, Sur
 						String sessionNumber = surveySession.getId()+"";
 						if (surveyType.trim().equalsIgnoreCase("ManagerCompetencyAssessment"))
 							{
-								Template.createExcelTemplate1(sessionNumber, map);
-								Template.createPdfTemplate1(sessionNumber, map);
+								Template.createExcelTemplate1(sessionNumber, map ,surveySession);
+								Template.createPdfTemplate1(sessionNumber, map, surveySession);
 								if (surveySession.isSurveyCompleted() == true)
 									{
 									//EmailService.sendEmail(surveySession);
@@ -94,8 +107,8 @@ public class SurveySessionServiceImpl extends SurveyGenericServiceImpl<Long, Sur
 							}
 						else
 							{
-								Template.createExcelTemplate2(sessionNumber, map);
-								Template.createPdfTemplate2(sessionNumber, map);
+								Template.createExcelTemplate2(sessionNumber, map, surveySession);
+								Template.createPdfTemplate2(sessionNumber, map, surveySession);
 								if (surveySession.isSurveyCompleted() == true)
 								{
 									EmailThread email = new EmailThread(surveySession);
@@ -136,8 +149,8 @@ public class SurveySessionServiceImpl extends SurveyGenericServiceImpl<Long, Sur
 						result.setNumC(surveySession.getNumC());
 						result.setNumE(surveySession.getNumE());
 						result.setNumT(surveySession.getNumT());
-						Template.createExcelTemplate3(sessionNumber, map,result );
-						Template.createPdfTemplate3(sessionNumber, map);
+						Template.createExcelTemplate3(sessionNumber, map,surveySession, result );
+						Template.createPdfTemplate3(sessionNumber, map, surveySession, result);
 						if (surveySession.isSurveyCompleted() == true)
 						{
 							EmailThread email = new EmailThread(surveySession);
@@ -153,6 +166,8 @@ public class SurveySessionServiceImpl extends SurveyGenericServiceImpl<Long, Sur
 				throw new SurveyGenericException(e.toString(), e);
 			}
 	}
+
+	
 	
  
 }

@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -29,6 +30,23 @@ public class SurveyManagementWebService {
 	
 	@Autowired
 	SurveySessionService surveySessionService;
+	
+	@GET
+	@Path("/surveySession/exist/email/{email}/surveyType/{surveyType}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean isEmailPresent(@PathParam("email") String email, @PathParam("surveyType") String surveyType){
+		if(email == null || surveyType == null){
+			return false;
+		}
+		
+		if(email.trim().length() == 0 || surveyType.trim().length() == 0){
+			return false;
+		}
+		
+		boolean emailPresent = surveySessionService.isEmailPresent(email, surveyType);
+		
+		return emailPresent;
+	}
 	
 	@GET
 	@Path("/surveySessionForParticipantLeadership")
@@ -482,7 +500,7 @@ public class SurveyManagementWebService {
 		questionAnswer16.setContext("Influencing Skills");
 		
 		QuestionAnswer questionAnswer17= new QuestionAnswer();
-		questionAnswer17.setQuestion("I am able to take a strategic approach in terms of planning and communicating with my stakeholders when influencing..");
+		questionAnswer17.setQuestion("I am able to take a strategic approach in terms of planning and communicating with my stakeholders when influencing.");
 		questionAnswer17.setContext("Influencing Skills");
 		
 		QuestionAnswer questionAnswer18= new QuestionAnswer();
@@ -555,7 +573,7 @@ public class SurveyManagementWebService {
 		questionAnswer1.setContext("Business Perspective");
 		
 		QuestionAnswer questionAnswer2= new QuestionAnswer();
-		questionAnswer2.setQuestion("Knows how the various functions at Colgate contribute to achieve Colgate�s strategic priorities.");
+		questionAnswer2.setQuestion("Knows how the various functions at Colgate contribute to achieve Colgate's strategic priorities.");
 		questionAnswer2.setContext("Business Perspective");
 		
 		QuestionAnswer questionAnswer3= new QuestionAnswer();
@@ -567,7 +585,7 @@ public class SurveyManagementWebService {
 		questionAnswer4.setContext("Business Perspective");
 		
 		QuestionAnswer questionAnswer5= new QuestionAnswer();
-		questionAnswer5.setQuestion("Understands the competitive dynamics faced by Colgate in today�s market environment.");
+		questionAnswer5.setQuestion("Understands the competitive dynamics faced by Colgate in today's market environment.");
 		questionAnswer5.setContext("Business Perspective");
 		
 		QuestionAnswer questionAnswer6= new QuestionAnswer();
@@ -599,7 +617,7 @@ public class SurveyManagementWebService {
 		questionAnswer12.setContext("Communication Skills");
 		
 		QuestionAnswer questionAnswer13= new QuestionAnswer();
-		questionAnswer13.setQuestion("Projects t confidence when communicating through his/her body language.");
+		questionAnswer13.setQuestion("Projects confidence when communicating through his/her body language.");
 		questionAnswer13.setContext("Communication Skills");
 		
 		QuestionAnswer questionAnswer14= new QuestionAnswer();
@@ -684,8 +702,14 @@ public class SurveyManagementWebService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Long saveOrUpdateSurveySession(SurveySession surveySession){
 		try {
+			boolean emailPresent = isEmailPresent(surveySession.getEmail(), surveySession.getSurveyType());
+			if(emailPresent){
+				return -25l;
+			}
+			
 			surveySession.setSurveyCompleted(true);
 			if(surveySession.getSurveyType().equalsIgnoreCase("ParticipantLeadershipStyle")){
+				surveySession = processLeadershipResults(surveySession);
 				LeadershipSurveyResult result = populateLeadershipSurveySessionWithResults(surveySession);
 				surveySession.setNumA(result.getNumA());
 				surveySession.setNumC(result.getNumC());
@@ -697,8 +721,43 @@ public class SurveyManagementWebService {
 		} catch (SurveyGenericException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			String msg = e.getMessage();
+			if(e.getMessage().equals("com.v2tech.surveysystem.common.SurveyGenericException: SurveySubmitted")){
+				return -25l;
+			}
 			return -1l;
 		}
+	}
+	
+	private SurveySession processLeadershipResults(SurveySession surveySession){
+		List<DoubleQuestionAnswer> doubleQuestionAnswers = surveySession.getDoubleQuestionAnswers();
+		Iterator<DoubleQuestionAnswer> itr = doubleQuestionAnswers.iterator();
+		while(itr.hasNext()){
+			DoubleQuestionAnswer dqa = itr.next();
+			String ans = dqa.getQuestionAnswer1().getAnswer();
+			if(ans.contains("1")){
+				if(ans.trim().length() > 0){
+					String tempa = ""+ans.charAt(0);
+					dqa.getQuestionAnswer1().setAnswer(tempa);
+					dqa.getQuestionAnswer2().setAnswer("");
+				}
+				else{
+					dqa.getQuestionAnswer2().setAnswer("");
+				}
+				
+			}
+			else{
+				if(ans.trim().length() > 0){
+					String tempa = ""+ans.charAt(0);
+					dqa.getQuestionAnswer2().setAnswer(tempa);
+					dqa.getQuestionAnswer1().setAnswer("");
+				}
+				
+				
+			}
+		}
+	return surveySession;
 	}
 //LeadershipSurveyResult
 	
@@ -708,34 +767,35 @@ public class SurveyManagementWebService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public LeadershipSurveyResult populateLeadershipSurveySessionWithResults(SurveySession surveySession){
 		LeadershipSurveyResult result = new LeadershipSurveyResult();
+		//surveySession = processLeadershipResults(surveySession);
 		Iterator<DoubleQuestionAnswer> itr = surveySession.getDoubleQuestionAnswers().iterator();
 			while(itr.hasNext()){
 				DoubleQuestionAnswer q = itr.next();
 				QuestionAnswer qa1 = q.getQuestionAnswer1();
 				QuestionAnswer qa2 = q.getQuestionAnswer2();
-				if(qa1.getAnswer().equalsIgnoreCase("A")){
+				if(qa1.getAnswer().contains("A")){
 					result.setNumA(result.getNumA() + 1);
 				}
-				else if(qa1.getAnswer().equalsIgnoreCase("T")){
+				else if(qa1.getAnswer().contains("T")){
 					result.setNumT(result.getNumT() + 1);
 				}
-				else if(qa1.getAnswer().equalsIgnoreCase("C")){
+				else if(qa1.getAnswer().contains("C")){
 					result.setNumC(result.getNumC() + 1);
 				}
-				else if(qa1.getAnswer().equalsIgnoreCase("E")){
+				else if(qa1.getAnswer().contains("E")){
 					result.setNumE(result.getNumE() + 1);
 				}
 				
-				if(qa2.getAnswer().equalsIgnoreCase("A")){
+				if(qa2.getAnswer().contains("A")){
 					result.setNumA(result.getNumA() + 1);
 				}
-				else if(qa2.getAnswer().equalsIgnoreCase("T")){
+				else if(qa2.getAnswer().contains("T")){
 					result.setNumT(result.getNumT() + 1);
 				}
-				else if(qa2.getAnswer().equalsIgnoreCase("C")){
+				else if(qa2.getAnswer().contains("C")){
 					result.setNumC(result.getNumC() + 1);
 				}
-				else if(qa2.getAnswer().equalsIgnoreCase("E")){
+				else if(qa2.getAnswer().contains("E")){
 					result.setNumE(result.getNumE() + 1);
 				}
 			}

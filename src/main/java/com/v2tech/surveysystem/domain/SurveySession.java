@@ -5,7 +5,12 @@ import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 @Entity
+@NamedQueries({
+@NamedQuery(name="SurveySession.findSurveySessionByEmailAndSurveyType", query="SELECT session FROM SurveySession session WHERE session.email = :email AND session.surveyType = :surveyType"),
+})
 public class SurveySession extends Base{
 	
 	

@@ -31,8 +31,8 @@
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/surveySystem" />
         
         <property name="user" value="root" />
-        <property name="password" value="" /> 
-        
+        <!--  <property name="password" value="root123" /> -->
+        <property name="password" value="" />
 
         <property name="initialPoolSize" value="3" />
 		<property name="minPoolSize" value="6" />

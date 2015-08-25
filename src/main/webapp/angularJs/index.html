@@ -22,7 +22,7 @@
     font-style: normal;
     font-size: 100%;
     line-height: 1;
-    font-family: inherit;
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
 }
 .clearfix:before,
 .clearfix:after {
@@ -33,7 +33,7 @@
 html { background-color: white }
 body {
     color: black;
-    font-family: "Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 13px;
     text-align: center;
 }
@@ -1175,6 +1175,7 @@ body>#survey form label {
 body>#survey form select {
     font-size: 13px;
     width: auto;
+	
 }
 body>#survey form input[type=text],
 body>#survey form input[type=tel],
@@ -1510,9 +1511,9 @@ body>#signup #key_benefits p {
 }
 #signup_form .switch_signup_method#google_signup .alt_signup_link:hover { color: #e73122 }
 body>#login {
-    border-top: 8px solid #f90;
+   border-top: 0px solid #f90;
     margin: 0 auto;
-    padding: 30px 0 0;
+    padding: 140px 0 0;
     width: 100%;
 }
 body>#login h1 {
@@ -1576,7 +1577,7 @@ body>#login h1.subdomain_image img {
 }
 body>#login h1.subdomain_image a { padding: 4px 0 }
 body>#login form {
-    border-radius: 10px;
+     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     box-sizing: border-box;
@@ -1585,9 +1586,12 @@ body>#login form {
     border: 8px solid #F5F3F0;
     display: inline-block;
     margin: 27px auto 0;
-    padding: 60px 50px 45px;
+    padding: 30px 60px 30px;
     position: relative;
     z-index: 0;
+    background-color: #2385c4;
+    border: 0px;
+    border-radius: 0px;
 }
 body>#login form .form_errors {
     color: #f90;
@@ -1597,7 +1601,7 @@ body>#login form .form_errors {
     margin: 0 0 40px;
 }
 body>#login form .field_container {
-    margin: 0 auto 12px;
+    margin: 0 auto 20px;
     text-align: left;
     width: auto;
 }
@@ -1671,8 +1675,7 @@ body>#login form button .button_text {
 body>#login form input[type=text],
 body>#login form input[type=email],
 body>#login form input[type=password] {
-    border-color: #F5F3F0;
-    border-style: solid;
+       BORDER-COLOR: TRANSPARENT;
     border-width: 4px;
     display: inline-block;
     position: relative;
@@ -1704,12 +1707,33 @@ body>#login form .login_link {
 body>#login form .login_link:hover { color: #f90 }
 body>#login form#login_form input[type=text],
 body>#login form#login_form input[type=email],
-body>#login form#login_form input[type=password] { width: 290px }
+body>#login form#login_form input[type=password] {
+ width: 420px;
+    height: 11px;
+    font-size: 12px;  
+	}
 body>#login form#login_form #google_sign_in_button { display: none }
 body>#login form#login_form #sign_in_options {
     color: #999488;
     font-size: 13px;
     padding: 30px 0 0;
+}
+body>#login form#login_form #sign_in_button {
+    background-color: #ed1b24;
+    border: 0px;
+    width: 100%;
+    height: 30px;
+    color: white;
+        font-size: 12px;
+		    margin: 0px;
+    margin-top: 12px;
+}
+body>#login form#login_form select{
+    width: 100%;
+    height: 35px;
+    padding: 0px;
+	    padding-left: 11px;
+    font-size: 12px;
 }
 body>#login form#login_form #sign_in_options #sign_in_alternatives_container {
     float: left;
@@ -1794,7 +1818,15 @@ body>#login #dont_have_an_account a {
     padding-bottom: 2px;
 }
 body>#login #dont_have_an_account a:hover { border-bottom: 2px solid #f90 }
-    </style>
+.logo_parent{
+position: absolute;
+top: -57px;
+left: 0px;
+}
+.select_parent{
+    width: 456px !important;
+}
+</style>
 
     
         <script src="js/prefixfree.min.js"></script>
@@ -1806,6 +1838,7 @@ body>#login #dont_have_an_account a:hover { border-bottom: 2px solid #f90 }
 
     <div id="login">
   <form id="login_form" ng-submit="navigateToFillSurvey()">
+  <div class="logo_parent"><img src="media/Logo_big.png" /></div>
     <div class="field_container">
       <input type="email" placeholder="Email Address" required  ng-model="email">
     </div>
@@ -1815,13 +1848,13 @@ body>#login #dont_have_an_account a:hover { border-bottom: 2px solid #f90 }
       
     </div>
     
-    <div class="field_container">
-    <select ng-model="surveyType" ng-options="opt as opt for opt in ['ManagerCompetencyAssessment', 'ParticipantCompetencyAssessment', 'ParticipantLeadershipStyle']" required>
+    <div class="field_container select_parent">
+    <select ng-model="surveyType" ng-options="opt as opt for opt in ['Manager Competency Assessment', 'Participant Competency Assessment', 'Participant Leadership Style']" required>
 	  <option></option>
 	</select>
     
        <button id="sign_in_button" type="submit">
-        <span class="button_text">Select Survey Type and Click to begin</span>
+		<span class="text">Select Survey Type and Click to begin</span>
       </button>
       
     </div>
